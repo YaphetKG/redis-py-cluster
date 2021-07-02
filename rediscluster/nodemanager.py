@@ -343,7 +343,7 @@ class NodeManager(object):
         split_ip1 = ip1.strip().split(".")
         split_ip2 = ip2.strip().split(".")
         for i, octet in enumerate(split_ip1):
-            if int(octet) != int(split_ip2[i]):
+            if octet != split_ip2[i]:
                 return False
         return True
 
