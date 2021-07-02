@@ -81,14 +81,14 @@ class NodeManager(object):
             if ('from_port' in item and 'to_port' not in item) or ('from_port' not in item and 'to_port' in item):
                 raise RedisClusterConfigError("Both from_port and to_port must be present in host_port_remap rule if either is defined")
 
-            try:
-                socket.inet_aton(item.get('from_host', '0.0.0.0').strip())
-                socket.inet_aton(item.get('to_host', '0.0.0.0').strip())
-            except socket.error:
-                raise RedisClusterConfigError("Both from_host and to_host in host_port_remap rule must be a valid ip address")
-            if len(item.get('from_host', '0.0.0.0').split('.')) < 4 or len(item.get('to_host', '0.0.0.0').split('.')) < 4:
-                raise RedisClusterConfigError(
-                    "Both from_host and to_host in host_port_remap rule must must have all octets specified")
+            # try:
+            #     socket.inet_aton(item.get('from_host', '0.0.0.0').strip())
+            #     socket.inet_aton(item.get('to_host', '0.0.0.0').strip())
+            # except socket.error:
+            #     raise RedisClusterConfigError("Both from_host and to_host in host_port_remap rule must be a valid ip address")
+            # if len(item.get('from_host', '0.0.0.0').split('.')) < 4 or len(item.get('to_host', '0.0.0.0').split('.')) < 4:
+            #     raise RedisClusterConfigError(
+            #         "Both from_host and to_host in host_port_remap rule must must have all octets specified")
 
             try:
                 int(item.get('from_port', 0))
